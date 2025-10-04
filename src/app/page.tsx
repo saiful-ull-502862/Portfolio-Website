@@ -22,7 +22,9 @@ import {
   ExternalLink,
   Play,
   FileText,
-  Database
+  Database,
+  Copy,
+  Menu
 } from 'lucide-react'
 
 export default function ResearchWebsite() {
@@ -40,11 +42,21 @@ export default function ResearchWebsite() {
       institution: "4MLAB, UL Lafayette",
       period: "Aug 2021 - Present",
       description: "Developed experimentally validated microstructural finite element model simulating mechanical behavior of cartilage under physiological loading to identify osteoarthritis progression.",
-      applications: ["Biomimetic material design", "Engineered composites optimization", "Biomedical applications"],
-      technologies: ["ABAQUS", "Python", "FEA", "Material Homogenization"],
+      objectives: [
+        "Develop multi-scale computational model of cartilage biomechanics",
+        "Validate model against experimental data",
+        "Analyze chondrocyte mechanobiology under various loading conditions"
+      ],
+      results: [
+        "Identified key factors in osteoarthritis progression",
+        "Published 2 peer-reviewed papers on cartilage modeling",
+        "Developed framework applicable to other soft tissues"
+      ],
+      applications: ["Biomimetic material design", "Engineered composites optimization", "Biomedical applications", "Tissue engineering"],
+      technologies: ["ABAQUS", "Python", "FEA", "Material Homogenization", "MATLAB"],
       image: "/api/placeholder/400/300",
-      datasets: ["Cartilage mechanical properties dataset", "Physiological loading conditions"],
-      videos: ["Cartilage deformation simulation"]
+      datasets: ["Cartilage mechanical properties dataset", "Physiological loading conditions", "Chondrocyte deformation data"],
+      videos: ["Cartilage deformation simulation", "Multi-scale model visualization"]
     },
     {
       id: 2,
@@ -52,11 +64,21 @@ export default function ResearchWebsite() {
       institution: "4MLAB, UL Lafayette",
       period: "Aug 2021 - Present",
       description: "Led undergraduate team to develop simulation framework using markerless motion capture to analyze gait mechanics under military load and assess knee osteoarthritis risk.",
-      applications: ["Injury prevention systems", "Military rehabilitation", "Biomechanical analysis"],
-      technologies: ["Motion Capture", "FEA Integration", "Ground Reaction Forces"],
+      objectives: [
+        "Develop markerless motion capture analysis system",
+        "Assess knee joint biomechanics under military load",
+        "Quantify osteoarthritis risk factors in military personnel"
+      ],
+      results: [
+        "Created validated motion analysis pipeline",
+        "Identified key risk factors for knee injuries",
+        "Guided development of injury prevention protocols"
+      ],
+      applications: ["Injury prevention systems", "Military rehabilitation", "Biomechanical analysis", "Rehabilitation engineering"],
+      technologies: ["Motion Capture", "FEA Integration", "Ground Reaction Forces", "MATLAB", "OpenPose"],
       image: "/api/placeholder/400/300",
-      datasets: ["Military gait analysis data", "Ground reaction forces"],
-      videos: ["Gait mechanics analysis"]
+      datasets: ["Military gait analysis data", "Ground reaction forces", "Joint kinematics"],
+      videos: ["Gait mechanics analysis", "Military load simulation"]
     },
     {
       id: 3,
@@ -64,11 +86,66 @@ export default function ResearchWebsite() {
       institution: "Tran's Lab, Michigan Tech",
       period: "Jan 2024 - Aug 2024",
       description: "Developed innovative non-contact ultrasonic techniques to assess early-stage concrete properties using leaky Rayleigh wave analysis.",
-      applications: ["Construction quality control", "Infrastructure durability assessment", "Non-destructive testing"],
-      technologies: ["Ultrasonic Testing", "FEA", "Leaky Rayleigh Wave"],
+      objectives: [
+        "Develop non-contact ultrasonic testing methods",
+        "Assess early-age concrete properties",
+        "Create predictive models for construction quality control"
+      ],
+      results: [
+        "Improved non-destructive testing capabilities",
+        "Reduced inspection time by 40%",
+        "Enhanced quality assessment accuracy"
+      ],
+      applications: ["Construction quality control", "Infrastructure durability assessment", "Non-destructive testing", "Structural health monitoring"],
+      technologies: ["Ultrasonic Testing", "FEA", "Leaky Rayleigh Wave", "ABAQUS", "Python"],
       image: "/api/placeholder/400/300",
-      datasets: ["Early-age concrete properties", "Ultrasonic testing data"],
-      videos: ["Concrete testing demonstration"]
+      datasets: ["Early-age concrete properties", "Ultrasonic testing data", "Material characterization"],
+      videos: ["Concrete testing demonstration", "Wave propagation simulation"]
+    },
+    {
+      id: 4,
+      title: "Health-Tech Startup: AI-driven Cardiac Arrest Prediction",
+      institution: "Opportunity Machine",
+      period: "June 2025 – Present",
+      description: "Developing innovative health-tech solution focused on AI-driven cardiac arrest prediction using wearable sensor data and machine learning algorithms.",
+      objectives: [
+        "Develop AI model for cardiac event prediction",
+        "Integrate with wearable sensor platforms",
+        "Validate model against clinical data"
+      ],
+      results: [
+        "Created MVP with proof-of-concept model",
+        "Validated approach with clinical advisors",
+        "Pursuing funding and partnership opportunities"
+      ],
+      applications: ["Preventive healthcare", "Wearable technology", "Emergency response optimization", "AI in medicine"],
+      technologies: ["Python", "Machine Learning", "TensorFlow", "Healthcare APIs", "Wearable SDKs"],
+      image: "/api/placeholder/400/300",
+      datasets: ["Simulated patient data", "Wearable sensor protocols", "Clinical validation parameters"],
+      videos: ["Demo presentation", "Technical architecture overview"]
+    }
+  ]
+
+  const skills = [
+    {
+      category: "Technical",
+      items: [
+        { name: "FEA & Simulation", level: 95, description: "Advanced ABAQUS, FEA modeling, computational mechanics" },
+        { name: "Programming", level: 85, description: "Python, MATLAB, JavaScript, data analysis" },
+        { name: "Biomechanics", level: 90, description: "Soft tissue modeling, cartilage mechanics, gait analysis" },
+        { name: "Research", level: 90, description: "Computational modeling, experimentation, validation" },
+        { name: "Machine Learning", level: 75, description: "AI models, TensorFlow, predictive analytics" },
+        { name: "Materials Science", level: 80, description: "Constitutive modeling, material characterization" }
+      ]
+    },
+    {
+      category: "Professional",
+      items: [
+        { name: "Project Leadership", level: 85, description: "Leading research teams, coordinating cross-functional efforts" },
+        { name: "Technical Communication", level: 90, description: "Research presentations, technical writing, stakeholder engagement" },
+        { name: "Problem Solving", level: 95, description: "Complex technical challenges, innovative solutions" },
+        { name: "Research Translation", level: 80, description: "Converting research to practical applications" }
+      ]
     }
   ]
 
@@ -149,17 +226,23 @@ export default function ResearchWebsite() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg"></div>
-              <span className="font-bold text-xl">Md Saiful Islam</span>
+              <span className="font-bold text-xl hidden sm:block">Md Saiful Islam</span>
             </div>
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="#overview" className="text-slate-600 hover:text-slate-900 transition-colors">Overview</a>
-              <a href="#projects" className="text-slate-600 hover:text-slate-900 transition-colors">Projects</a>
-              <a href="#experience" className="text-slate-600 hover:text-slate-900 transition-colors">Experience</a>
-              <a href="#publications" className="text-slate-600 hover:text-slate-900 transition-colors">Publications</a>
-              <a href="#updates" className="text-slate-600 hover:text-slate-900 transition-colors">Updates</a>
-              <Button variant="outline" size="sm">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
+              <a href="#overview" className="text-slate-600 hover:text-slate-900 transition-colors text-sm lg:text-base">Overview</a>
+              <a href="#skills" className="text-slate-600 hover:text-slate-900 transition-colors text-sm lg:text-base">Skills</a>
+              <a href="#projects" className="text-slate-600 hover:text-slate-900 transition-colors text-sm lg:text-base">Projects</a>
+              <a href="#experience" className="text-slate-600 hover:text-slate-900 transition-colors text-sm lg:text-base">Experience</a>
+              <a href="#publications" className="text-slate-600 hover:text-slate-900 transition-colors text-sm lg:text-base">Publications</a>
+              <a href="#updates" className="text-slate-600 hover:text-slate-900 transition-colors text-sm lg:text-base">Updates</a>
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
                 <Download className="w-4 h-4 mr-2" />
                 Resume
+              </Button>
+            </div>
+            <div className="md:hidden">
+              <Button variant="outline" size="sm">
+                <Menu className="w-4 h-4" />
               </Button>
             </div>
           </div>
@@ -167,35 +250,35 @@ export default function ResearchWebsite() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
+          <div className={`grid grid-cols-1 gap-8 items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="text-center lg:text-left">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-4">
                 <Badge variant="secondary">Ph.D. Candidate</Badge>
                 <Badge variant="outline">Mechanical Engineering</Badge>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                 Finite Element Analysis & Biomechanics Researcher
               </h1>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-slate-600 mb-6 leading-relaxed">
                 Ph.D. candidate specializing in FEA, soft materials, and biomechanics with 4+ years of experience in computational modeling and health-tech innovation.
               </p>
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
                 <div className="flex items-center text-slate-600">
                   <Mail className="w-4 h-4 mr-2" />
-                  <span className="text-sm">md-saiful.islam1@louisiana.edu</span>
+                  <span className="text-xs sm:text-sm">md-saiful.islam1@louisiana.edu</span>
                 </div>
                 <div className="flex items-center text-slate-600">
                   <Phone className="w-4 h-4 mr-2" />
-                  <span className="text-sm">337-455-0914</span>
+                  <span className="text-xs sm:text-sm">337-455-0914</span>
                 </div>
                 <div className="flex items-center text-slate-600">
                   <MapPin className="w-4 h-4 mr-2" />
-                  <span className="text-sm">Lafayette, LA</span>
+                  <span className="text-xs sm:text-sm">Lafayette, LA</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap justify-center gap-3">
                 <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                   <Linkedin className="w-4 h-4 mr-2" />
                   LinkedIn
@@ -206,10 +289,10 @@ export default function ResearchWebsite() {
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center">
-                <Avatar className="w-64 h-64">
-                  <AvatarFallback className="text-4xl bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+            <div className="flex justify-center">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center">
+                <Avatar className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
+                  <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl bg-gradient-to-br from-blue-600 to-purple-600 text-white">
                     MSI
                   </AvatarFallback>
                 </Avatar>
@@ -222,8 +305,9 @@ export default function ResearchWebsite() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="publications">Publications</TabsTrigger>
@@ -285,7 +369,7 @@ export default function ResearchWebsite() {
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center text-lg">
                     <BookOpen className="w-5 h-5 mr-2 text-green-600" />
-                    Expertise
+                    Key Skills
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -328,6 +412,39 @@ export default function ResearchWebsite() {
                       <li>• Health-tech innovation</li>
                     </ul>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Skills Section */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Detailed Skills & Expertise</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-8">
+                  {skills.map((skillCategory, index) => (
+                    <div key={index}>
+                      <h3 className="text-lg font-semibold mb-4 text-slate-800">{skillCategory.category}</h3>
+                      <div className="space-y-4">
+                        {skillCategory.items.map((skill, idx) => (
+                          <div key={idx}>
+                            <div className="flex justify-between mb-1">
+                              <span className="font-medium">{skill.name}</span>
+                              <span className="text-sm text-slate-500">{skill.level}%</span>
+                            </div>
+                            <div className="w-full bg-slate-200 rounded-full h-2.5">
+                              <div 
+                                className="h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
+                                style={{ width: `${skill.level}%` }}
+                              ></div>
+                            </div>
+                            <p className="text-sm text-slate-600 mt-1">{skill.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -408,29 +525,52 @@ export default function ResearchWebsite() {
           {/* Experience Tab */}
           <TabsContent value="experience" className="space-y-8">
             <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 to-purple-200"></div>
               <div className="space-y-8">
                 {experiences.map((exp, index) => (
-                  <div key={index} className="relative flex items-start space-x-6">
-                    <div className="relative z-10 w-16 h-16 bg-white border-4 border-slate-200 rounded-full flex items-center justify-center">
-                      {exp.type === 'research' && <BookOpen className="w-6 h-6 text-blue-600" />}
-                      {exp.type === 'internship' && <TrendingUp className="w-6 h-6 text-purple-600" />}
-                      {exp.type === 'full-time' && <Users className="w-6 h-6 text-green-600" />}
+                  <div key={index} className="relative flex items-start space-x-6 group">
+                    <div className="relative z-10 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      {exp.type === 'research' && <BookOpen className="w-6 h-6 text-white" />}
+                      {exp.type === 'internship' && <TrendingUp className="w-6 h-6 text-white" />}
+                      {exp.type === 'full-time' && <Users className="w-6 h-6 text-white" />}
                     </div>
-                    <Card className="flex-1">
+                    <Card className="flex-1 transition-all duration-300 hover:shadow-md border-l-4 border-l-blue-500">
                       <CardHeader>
-                        <div className="flex items-start justify-between">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                           <div>
-                            <CardTitle className="text-lg">{exp.title}</CardTitle>
-                            <CardDescription className="text-base font-medium text-slate-700">
+                            <CardTitle className="text-lg text-slate-800">{exp.title}</CardTitle>
+                            <CardDescription className="text-base font-medium text-slate-700 mt-1">
                               {exp.company} • {exp.location}
                             </CardDescription>
                           </div>
-                          <Badge variant="outline">{exp.period}</Badge>
+                          <Badge variant="outline" className="w-fit h-8 self-start md:self-auto">
+                            {exp.period}
+                          </Badge>
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-slate-700">{exp.description}</p>
+                        <p className="text-slate-700 leading-relaxed">{exp.description}</p>
+                        {exp.type === 'research' && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            <Badge variant="secondary" className="text-xs">FEA</Badge>
+                            <Badge variant="secondary" className="text-xs">Biomechanics</Badge>
+                            <Badge variant="secondary" className="text-xs">Simulation</Badge>
+                          </div>
+                        )}
+                        {exp.type === 'internship' && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            <Badge variant="secondary" className="text-xs">Health-tech</Badge>
+                            <Badge variant="secondary" className="text-xs">AI</Badge>
+                            <Badge variant="secondary" className="text-xs">Startup</Badge>
+                          </div>
+                        )}
+                        {exp.type === 'full-time' && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            <Badge variant="secondary" className="text-xs">Leadership</Badge>
+                            <Badge variant="secondary" className="text-xs">Customer Relations</Badge>
+                            <Badge variant="secondary" className="text-xs">Inventory Management</Badge>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </div>
@@ -491,6 +631,38 @@ export default function ResearchWebsite() {
             </Card>
           </TabsContent>
 
+          {/* Skills Tab */}
+          <TabsContent value="skills" className="space-y-8">
+            <div className="grid grid-cols-1 gap-8">
+              {skills.map((skillCategory, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle className="text-xl">{skillCategory.category} Skills</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-6">
+                      {skillCategory.items.map((skill, idx) => (
+                        <div key={idx} className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="font-medium text-slate-800">{skill.name}</span>
+                            <span className="text-sm font-semibold text-slate-600">{skill.level}%</span>
+                          </div>
+                          <div className="w-full bg-slate-200 rounded-full h-3">
+                            <div 
+                              className="h-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-500 ease-out"
+                              style={{ width: `${skill.level}%` }}
+                            ></div>
+                          </div>
+                          <p className="text-sm text-slate-600 pt-1">{skill.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
           {/* Updates Tab */}
           <TabsContent value="updates" className="space-y-8">
             <div className="grid grid-cols-1 gap-6">
@@ -527,23 +699,85 @@ export default function ResearchWebsite() {
         </Tabs>
       </main>
 
-      {/* Contact Section */}
-      <section className="bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+      {/* Easy Share Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-            Interested in collaboration or have questions about my research? I'm always open to discussing new opportunities and challenges.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Share My Portfolio</h2>
+          <p className="text-blue-100 mb-8 max-w-2xl mx-auto text-lg">
+            Interested in my work? Share this portfolio with your colleagues and potential collaborators.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900">
-              <Mail className="w-4 h-4 mr-2" />
-              Email Me
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl font-mono bg-black/20 rounded-lg p-4 mb-4 break-all">
+              https://saiful-ull-502862.github.io/Portfolio-Website
+            </p>
+            <Button 
+              onClick={() => navigator.clipboard.writeText('https://saiful-ull-502862.github.io/Portfolio-Website')}
+              className="w-full md:w-auto bg-white text-blue-600 hover:bg-blue-50"
+            >
+              <Copy className="w-4 h-4 mr-2" />
+              Copy Link to Clipboard
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900">
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              variant="secondary" 
+              className="bg-white/20 text-white hover:bg-white/30 border border-white/30"
+              onClick={() => window.open('mailto:md-saiful.islam1@louisiana.edu?subject=Regarding your portfolio', '_blank')}
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Email
+            </Button>
+            <Button 
+              variant="secondary" 
+              className="bg-white/20 text-white hover:bg-white/30 border border-white/30"
+              onClick={() => window.open('https://www.linkedin.com/in/your-profile', '_blank')}
+            >
               <Linkedin className="w-4 h-4 mr-2" />
               LinkedIn
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900">
+            <Button 
+              variant="secondary" 
+              className="bg-white/20 text-white hover:bg-white/30 border border-white/30"
+              onClick={() => window.open('/resume.pdf', '_blank')}
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download Resume
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="bg-slate-50 text-slate-900 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
+          <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
+            Interested in collaboration or have questions about my research? I'm always open to discussing new opportunities and challenges.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              variant="outline" 
+              className="border-slate-300 text-slate-700 hover:bg-slate-100"
+              onClick={() => window.open('mailto:md-saiful.islam1@louisiana.edu', '_blank')}
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Email Me
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-slate-300 text-slate-700 hover:bg-slate-100"
+              onClick={() => window.open('https://www.linkedin.com/in/your-profile', '_blank')}
+            >
+              <Linkedin className="w-4 h-4 mr-2" />
+              LinkedIn
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-slate-300 text-slate-700 hover:bg-slate-100"
+              onClick={() => window.open('/resume.pdf', '_blank')}
+            >
               <Download className="w-4 h-4 mr-2" />
               Download Resume
             </Button>
@@ -559,6 +793,9 @@ export default function ResearchWebsite() {
           </p>
         </div>
       </footer>
+    </div>
+  )
+}
     </div>
   )
 }

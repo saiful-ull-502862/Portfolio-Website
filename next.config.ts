@@ -14,8 +14,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   // Base path for GitHub Pages
-  basePath: process.env.NODE_ENV === 'production' ? '/research-website' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/research-website/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/Portfolio-Website' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Portfolio-Website/' : '',
   webpack: (config, { dev }) => {
     if (dev) {
       // 禁用 webpack 的热模块替换

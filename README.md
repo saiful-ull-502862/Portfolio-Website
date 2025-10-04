@@ -42,21 +42,65 @@ npm run dev
 
 ## 🚀 Deployment to GitHub Pages
 
-### Automatic Deployment
+### Enable GitHub Pages
 
-1. Push your code to the `main` branch
-2. GitHub Actions will automatically build and deploy your site
-3. Your site will be available at `https://yourusername.github.io/research-website`
+1. Go to your repository settings on GitHub
+2. Scroll down to the "Pages" section
+3. Under "Source", select "Deploy from a branch"
+4. Select `main` as the branch and `/ (root)` as the folder
+5. Click "Save"
 
-### Manual Deployment
+### Automatic Deployment with GitHub Actions (Recommended)
 
-1. Build the static site:
+1. Create a `.github/workflows/deploy.yml` file in your repository with the following content:
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build for GitHub Pages
+        run: npm run build && npx next export
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
+```
+
+2. Commit and push this file to your repository
+3. Your site will be automatically built and deployed after each push to the main branch
+4. Your site will be available at `https://saiful-ull-502862.github.io/Portfolio-Website`
+
+### Manual Deployment (Alternative)
+
+1. Build the static site locally:
 ```bash
 npm run build
+npm run export
 ```
 
 2. The built files will be in the `out` directory
-3. Deploy the `out` directory to GitHub Pages
+3. You can then serve these files using any static hosting service
 
 ## 📁 Project Structure
 
