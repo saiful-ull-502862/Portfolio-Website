@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Base path for GitHub Pages
+  // Base path for GitHub Pages (only in production build)
   basePath: process.env.NODE_ENV === 'production' ? '/Portfolio-Website' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/Portfolio-Website/' : '',
   // Disable server-side image optimization for static export
