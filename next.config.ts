@@ -5,8 +5,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // 禁用 Next.js 热重载，由 nodemon 处理重编译
-  reactStrictMode: false,
   // Static export configuration for GitHub Pages
   output: 'export',
   trailingSlash: true,
@@ -16,12 +14,18 @@ const nextConfig: NextConfig = {
   // Base path for GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/Portfolio-Website' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/Portfolio-Website/' : '',
-  webpack: (config, { dev }) => {
-    if (dev) {
-      // 禁用 webpack 的热模块替换
-      config.watchOptions = {
-        ignored: ['**/*'], // 忽略所有文件变化
-      };
+  // Disable server-side image optimization for static export
+  experimental: {
+    scrollRestoration: true,
+  },
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      // Enable static image optimization during export
+      Object.assign(config.resolve.fallback, {
+        fs: false,
+        net: false,
+        tls: false,
+      });
     }
     return config;
   },
